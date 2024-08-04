@@ -33,10 +33,10 @@ http.createServer((req,res,next)=>{
 
 
         let myDAta ;
-        res,on('data' , (ham)=>{
+        req.on('data' , (ham)=>{
             myDAta =ham
         })
-        res.on('end'  ,()=>{
+        req.on('end'  ,()=>{
             const conv = JSON.parse(myDAta);
             console.log(conv);
             let findUser = false;
@@ -64,10 +64,10 @@ http.createServer((req,res,next)=>{
      // find user by Name
      else if( url == '/findByname' && method == 'GET'){
         let nam ;
-        res.on('data' ,(hamol)=>{
+        req.on('data' ,(hamol)=>{
             nam=hamol
         })
-        res.on('end',()=>{
+        req.on('end',()=>{
             const convert = JSON.parse(nam);
             console.log(nam);
             const findB = myArr.filter((ele)=>{
@@ -109,10 +109,10 @@ http.createServer((req,res,next)=>{
 
 
         let myBodyData 
-        res.on('data' , (chunk)=>{
+        req.on('data' , (chunk)=>{
             myBodyData = chunk
         })
-        res.on( 'end',()=>{
+        req.on( 'end',()=>{
             console.log(myBodyData);
             const convertBuffer = JSON.parse(myBodyData);
             console.log(convertBuffer);
@@ -136,10 +136,10 @@ http.createServer((req,res,next)=>{
      // delete user by id 
      else if( url == '/DeleteUSer' && method == 'DELETE'){
         let nam ;
-        res.on('data' ,(hamol)=>{
+        req.on('data' ,(hamol)=>{
             nam=hamol
         })
-        res.on('end',()=>{
+        req.on('end',()=>{
             const convert = JSON.parse(nam);
             console.log(nam);
             const findB = myArr.filter((ele)=>{
